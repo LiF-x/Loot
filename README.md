@@ -1,3 +1,4 @@
+<img src="https://img.shields.io/badge/LiFx%20Server%20Framework%20version-%3E3.0.0-green" />
 # Loot
 [Download here](https://github.com/LiF-x/Loot/releases/latest)
 
