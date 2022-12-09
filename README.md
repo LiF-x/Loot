@@ -14,4 +14,4 @@
 ### Configuration
 
 1. Edit the lootTable.cs file
-2. Add one line per drop item following this template *dbi.Update("INSERT IGNORE `" @ LiFxLoot::loottable @ "` VALUES (ContainerID, ItemDropID, Min Quality, Max Quality, Min Quantity, Max Quantity, Chance)");* Where you replace the values according to your drop wishes.
+2. Add one line per drop item following this template *dbi.Update("INSERT IGNORE `" @ LiFxLoot::loottable() @ "` VALUES (ContainerID, ItemDropID, Min Quality, Max Quality, Min Quantity, Max Quantity, Chance)");* Where you replace the values according to your drop wishes.

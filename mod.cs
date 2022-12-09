@@ -29,10 +29,10 @@ package LiFxLoot
       return "lifx_loot";
     }
     function LiFxLoot::dbInit() {
-      dbi.Update("DROP TABLE IF EXISTS `" @ LiFxLoot::loottable @ "`");
-      %sqlTrigger = "CREATE TRIGGER `" @ LiFxLoot::loottable @ "` BEFORE INSERT ON `movable_objects` FOR EACH ROW BEGIN INSERT INTO items SELECT NULL, new.RootContainerID, ItemObjectTypeID, @Quality :=FLOOR(RAND()*(MaxQuality-MinQuality+1)+MinQuality) AS Quality, FLOOR(RAND()*(MaxQuantity-MinQuantity+1)+MinQuantity) AS Quantity, @Durability := (SELECT FLOOR(50 + (1.5 * @Quality) * 100)) AS Durability, (@Durability) AS CreatedDurability, NULL FROM lifx_loot WHERE ContainerObjectTypeID = new.ObjectTypeID and Chance > 0 ORDER BY -LOG(1.0 - RAND()) / Chance LIMIT " @ $LiFx::loot::numDrops @"; END;\n";
+      dbi.Update("DROP TABLE IF EXISTS `" @ LiFxLoot::loottable() @ "`");
+      %sqlTrigger = "CREATE TRIGGER `" @ LiFxLoot::loottable() @ "` BEFORE INSERT ON `movable_objects` FOR EACH ROW BEGIN INSERT INTO items SELECT NULL, new.RootContainerID, ItemObjectTypeID, @Quality :=FLOOR(RAND()*(MaxQuality-MinQuality+1)+MinQuality) AS Quality, FLOOR(RAND()*(MaxQuantity-MinQuantity+1)+MinQuantity) AS Quantity, @Durability := (SELECT FLOOR(50 + (1.5 * @Quality) * 100)) AS Durability, (@Durability) AS CreatedDurability, NULL FROM lifx_loot WHERE ContainerObjectTypeID = new.ObjectTypeID and Chance > 0 ORDER BY -LOG(1.0 - RAND()) / Chance LIMIT " @ $LiFx::loot::numDrops @"; END;\n";
       
-      %sqlTable = "CREATE TABLE IF NOT EXISTS `" @ LiFxLoot::loottable @ "` (\n";
+      %sqlTable = "CREATE TABLE IF NOT EXISTS `" @ LiFxLoot::loottable() @ "` (\n";
       %sqlTable = %sqlTable @ "`ContainerObjectTypeID` INT(11) NOT NULL,\n";
       %sqlTable = %sqlTable @ "`ItemObjectTypeID` INT(11) NOT NULL,\n";
       %sqlTable = %sqlTable @ "`MinQuality` INT(11) NOT NULL,\n";
@@ -49,7 +49,7 @@ package LiFxLoot
       dbi.Update(%sqlTable); // Create the table if it does not exist
     }
     function LiFxLoot::dbChanges() {
-      dbi.Update("TRUNCATE TABLE `" @ LiFxLoot::loottable @ "`");
+      dbi.Update("TRUNCATE TABLE `" @ LiFxLoot::loottable() @ "`");
       exec("./lootTable.cs");
     }
     function LiFxLoot::version() {

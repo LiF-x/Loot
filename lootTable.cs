@@ -10,5 +10,5 @@
 //
 //  Drop 2 is then twice more likely to be dropped than Drop 1 (2/1)
 // 
-// dbi.Update("INSERT IGNORE `" @ LiFxLoot::loottable @ "` VALUES (ContainerID, ItemDropID, Min Quality, Max Quality, Min Quantity, Max Quantity, Chance)");
+// dbi.Update("INSERT IGNORE `" @ LiFxLoot::loottable() @ "` VALUES (ContainerID, ItemDropID, Min Quality, Max Quality, Min Quantity, Max Quantity, Chance)");
 //
