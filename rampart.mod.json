@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "Loot",
+  "name": "Loot",
+  "version": "1.0.0",
+  "description": "Loot functionality for Life is Feudal: Your Own — works on new containers.",
+  "authors": ["Christophe Roblin"],
+  "loadOrderHint": 100,
+  "files": {
+    "overlay": [
+      { "src": "mod.cs",        "dest": "mods/Loot/mod.cs" },
+      { "src": "lootTable.cs",  "dest": "mods/Loot/lootTable.cs" }
+    ],
+    "dataPatches": []
+  }
+}
