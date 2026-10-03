@@ -1,15 +1,20 @@
 {
   "schemaVersion": 1,
   "id": "Loot",
-  "name": "Loot",
+  "name": "LiFx Loot",
   "version": "1.0.0",
-  "description": "Loot functionality for Life is Feudal: Your Own — works on new containers.",
+  "description": "Loot table for container drops: spawns randomised items into newly created containers.",
   "authors": ["Christophe Roblin"],
+  "source": { "repo": "LiF-x/Loot", "commit": "1e6309ef58cd86c75f51432e669337fc7e03a3a5" },
+  "baseline": { "gameBuild": "sha256:d47ef6156423f1226b6d07a1f31f81d3aa94bc460cc1ac76bcf7d7ef9c305d4a", "steamBuildId": "11261643" },
+  "license": "GPL-3.0-only",
+  "distribution": "hostable",
+  "dependencies": ["LiF-x/ServerAutoloader"],
   "loadOrderHint": 100,
   "files": {
     "overlay": [
-      { "src": "mod.cs",        "dest": "mods/Loot/mod.cs" },
-      { "src": "lootTable.cs",  "dest": "mods/Loot/lootTable.cs" }
+      { "src": "mod.cs", "dest": "mods/Loot/mod.cs" },
+      { "src": "lootTable.cs", "dest": "mods/Loot/lootTable.cs" }
     ],
     "dataPatches": []
   }
